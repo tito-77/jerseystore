@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PRODUCTS</title>
+        <style type="text/css">
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(to bottom left, aqua, tomato);
+                color: #fff;
+            }
+
+            header {
+                background-color: #333;
+                color: #fffefe;
+                padding: 10px 20px;
+                text-align: center;
+            }
+
+            nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 20px;
+            }
+
+            nav a:hover {
+                background-color: #9b4848;
+            }
+
+            .images {
+                display: flex;
+                flex-wrap: nowrap;
+                width: 60%;
+                justify-content: space-between;
+                margin: 20px auto;
+            }
+
+            .images img {
+                border-radius: 10px;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .images img:hover {
+                transform: scale(1.1);
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            .total {
+                text-align: center;
+                margin: 20px auto;
+                font-size: 18px;
+                color: #333;
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>PRODUCTS OFFERED</h1>
+            <nav>
+            <a href="homepage.html">Home</a>
+            <a href="productspage.html">Product</a>
+            <a href="enquirepage.html">Enquire</a>
+            <a href="aboutpage.html">About</a>
+            </nav>
+        </header>
+
+        <h2>Sports wear</h2>
+        <p>We sell the best quality sports wear from all the top brands</p>
+        <div class="images">
+            <div>
+                <img src="img1.jpg" alt="New season sports wear" width="200" height="250" onclick="enlargeImage(this)">
+                <br>new season @1500
+                <br>Quantity: <input type="number" value="1" min="1" onchange="updateTotal()">
+            </div>
+            <div>
+                <img src="img2.jpg" alt="International sports wear" width="200" height="250" onclick="enlargeImage(this)">
+                <br>international @1000
+                <br>Quantity: <input type="number" value="1" min="1" onchange="updateTotal()">
+            </div>
+            <div>
+                <img src="img3.jpg" alt="Old season sports wear" width="200" height="250" onclick="enlargeImage(this)">
+                <br>old season @800
+                <br>Quantity: <input type="number" value="1" min="1" onchange="updateTotal()">
+            </div>
+        </div>
+
+        <div class="total">
+            Total: <span id="totalPrice">3300</span> KES
+        </div>
+
+        <script>
+         
+            function navigate(page) {
+                alert('You are about to navigate to ' + page + ' page.');
+            }
+
+            
+            function enlargeImage(image) {
+                const modal = document.createElement('div');
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100vw';
+                modal.style.height = '100vh';
+                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                modal.style.display = 'flex';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+
+                const enlargedImg = document.createElement('img');
+                enlargedImg.src = image.src;
+                enlargedImg.style.maxWidth = '80%';
+                enlargedImg.style.maxHeight = '80%';
+                enlargedImg.style.borderRadius = '10px';
+
+                modal.appendChild(enlargedImg);
+
+                modal.onclick = function() {
+                    document.body.removeChild(modal);
+                };
+
+                document.body.appendChild(modal);
+            }
+
+            
+            function updateTotal() {
+                const quantities = document.querySelectorAll('input[type="number"]');
+                const prices = [1500, 1000, 800];
+                let total = 0;
+
+                quantities.forEach((quantity, index) => {
+                    total += quantity.value * prices[index];
+                });
+
+                document.getElementById('totalPrice').innerText = total;
+            }
+
+            
+            updateTotal();
+        </script>
+    </body>
+</html>

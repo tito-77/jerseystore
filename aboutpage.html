@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ABOUT</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(to bottom left, aqua, tomato);
+                color: #fff;
+            }
+
+            header {
+                background-color: #333;
+                color: #fffefe;
+                padding: 10px 20px;
+                text-align: center;
+            }
+
+            nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 20px;
+            }
+
+            nav a:hover {
+                background-color: #9b4848;
+            }
+
+            p {
+                text-align: center;
+            }
+
+            .contact-info {
+                margin: 20px auto;
+                text-align: center;
+            }
+
+            .copy-btn {
+                background-color: #9b4848;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .copy-btn:hover {
+                background-color: #444;
+            }
+
+            img {
+                display: block;
+                margin: 20px auto;
+                border-radius: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            img:hover {
+                cursor: pointer;
+                transform: scale(1.1);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>ABOUT US</h1>
+        </header>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="productspage.html">Product</a>
+            <a href="enquirepage.html">Enquire</a>
+            <a href="aboutpage.html">About</a>
+        </nav>
+
+        <div class="contact-info">
+            <p>
+                We offer the best sporting jerseys at an affordable price. You can contact us via the following channels:<br><br>
+                
+                WhatsApp: 0700800907 
+                <button class="copy-btn" onclick="copyToClipboard('0700800907')">Copy</button><br><br>
+
+                Instagram: royals_outlet.sports
+                <button class="copy-btn" onclick="copyToClipboard('royals_outlet.sports')">Copy</button><br><br>
+                
+                For any further inquiries, email us at:<br><br>
+                royalsports@gmail.com 
+                <button class="copy-btn" onclick="copyToClipboard('royalsports@gmail.com')">Copy</button><br><br>
+
+                <img src="image6.png" alt="Company Logo" height="250" width="200" onclick="enlargeImage(this)">
+            </p>
+        </div>
+
+        <script>
+            function copyToClipboard(text) {
+                const tempInput = document.createElement("input");
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                alert(text + " copied to clipboard!");
+            }
+
+            
+            function enlargeImage(img) {
+                const enlargedImg = document.createElement("img");
+                enlargedImg.src = img.src;
+                enlargedImg.style.width = "500px";
+                enlargedImg.style.height = "auto";
+                enlargedImg.style.position = "fixed";
+                enlargedImg.style.top = "50%";
+                enlargedImg.style.left = "50%";
+                enlargedImg.style.transform = "translate(-50%, -50%)";
+                enlargedImg.style.zIndex = "1000";
+                enlargedImg.style.border = "5px solid white";
+                enlargedImg.style.borderRadius = "10px";
+                enlargedImg.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+                enlargedImg.id = "enlargedImg";
+
+                                enlargedImg.onclick = function() {
+                    document.body.removeChild(enlargedImg);
+                };
+
+                document.body.appendChild(enlargedImg);
+            }
+        </script>
+    </body>
+</html>

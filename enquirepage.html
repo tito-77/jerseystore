@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ENQUIRY</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background:linear-gradient(to bottom left,aqua,tomato) ;
+                color: #fff;
+            }
+
+            header {
+                background-color: #333;
+                color: #fffefe;
+                padding: 10px 20px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                margin-bottom: 10px;
+            }
+
+            nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 20px;
+            }
+
+            nav a:hover {
+                background-color: #9b4848;
+            }
+
+            .port {
+                width: 60%;
+                margin: 20px auto;
+                margin-top: 150px;
+            }
+
+            input[type="text"], input[type="number"], textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+
+            input[type="button"] {
+                background-color: #9b4848;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+
+            input[type="button"]:hover {
+                background-color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>ENQUIRE ABOUT JERSEYS</h1>
+            <nav>
+                <a href="homepage.html">Home</a>
+                <a href="productspage.html">Product</a>
+                <a href="enquirepage.html">Enquire</a>
+                <a href="aboutpage.html">About</a>
+            </nav>
+        </header>
+
+        <form class="port" id="enquiryForm">
+            <h1>What category do you want to choose from?</h1><br>
+            <input type="radio" name="category" value="Children"> Children<br>
+            <input type="radio" name="category" value="Adult"> Adult<br><br>
+            
+            <h1>Section size</h1><br>
+            <input type="radio" name="size" value="Small"> Small<br>
+            <input type="radio" name="size" value="Medium"> Medium<br>
+            <input type="radio" name="size" value="Large"> Large<br><br>
+
+            Name:<br>
+            <input type="text" name="txtname" size="40" placeholder="Name"><br><br>
+            Email:<br>
+            <input type="text" name="txtemail" size="40" placeholder="Email"><br><br>
+            If you prefer getting a response via phone, please fill in:<br>
+            Phone number:<br>
+            <input type="number" name="numphone" size="10" placeholder="Phone number"><br><br>
+
+            What product are you interested in?<br /><br>
+            <textarea rows="5" cols="50" name="description" placeholder="Type the description here..."></textarea><br><br>
+
+            <input type="button" name="submit" value="SEND" onclick="validateForm()">
+        </form>
+
+        <script>
+            function validateForm() {
+               
+                const name = document.forms["enquiryForm"]["txtname"].value;
+                const email = document.forms["enquiryForm"]["txtemail"].value;
+                const category = document.forms["enquiryForm"]["category"].value;
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+                
+                if (name === "") {
+                    alert("Name must be filled out");
+                    return false;
+                }
+
+                
+                if (!document.querySelector('input[name="category"]:checked')) {
+                    alert("Please select a category");
+                    return false;
+                }
+
+                
+                if (email === "") {
+                    alert("Email must be filled out");
+                    return false;
+                } else if (!email.match(emailPattern)) {
+                    alert("Please enter a valid email address");
+                    return false;
+                }
+
+                
+                alert("Form submitted successfully!");
+                return true;
+            }
+        </script>
+    </body>
+</html>
